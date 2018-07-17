@@ -8,7 +8,7 @@ module.exports = function(app) {
     .post(library.create_a_book);
 
 
-  app.route('/book/:bookId')
+  app.route('/books/:bookId')
     .get(library.read_a_book)
     .put(library.update_a_book)
     .delete(library.delete_a_book);

@@ -2,7 +2,7 @@ var express = require("express"),
   app = express(),
   port = process.env.PORT || 3000,
   mongoose = require("mongoose"),
-  fileUpload = require("express-fileupload"),
+  cors = require('cors'),
   Book = require("./api/models/bookModel"), //created model loading here
   bodyParser = require("body-parser");
 
@@ -10,9 +10,9 @@ var express = require("express"),
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/librarydb");
 
-app.use(fileUpload());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors());
 
 var routes = require("./api/routes/bookRoutes"); //importing route
 routes(app); //register the route
